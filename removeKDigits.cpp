@@ -30,6 +30,7 @@ class Solution {
             res.push_back(st.top());
             st.pop();
         }
+        while(res[res.length()-1]=='0') res.pop_back();
         reverse(res.begin(),res.end());
         if(res.length()==0) return "0";
         return res;
