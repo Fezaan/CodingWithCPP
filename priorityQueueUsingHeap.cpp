@@ -3,39 +3,49 @@
 using namespace std;
 int H[10009];
 int s = -1;
-int parent(int i) {
+int parent(int i)
+{
     return (i - 1) / 2;
 }
-int leftChild(int i) {
+int leftChild(int i)
+{
     return ((2 * i) + 1);
 }
-int rightChild(int i) {
+int rightChild(int i)
+{
     return ((2 * i) + 2);
 }
-void shiftUp(int i) {
-    while (i > 0 && H[parent(i)] < H[i]) {
+void shiftUp(int i)
+{
+    while (i > 0 && H[parent(i)] < H[i])
+    {
         swap(H[parent(i)], H[i]);
         i = parent(i);
     }
 }
-void shiftDown(int i) {
+void shiftDown(int i)
+{
     int maxIndex = i;
     int l = leftChild(i);
 
-    if (l <= s && H[l] > H[maxIndex]) {
+    if (l <= s && H[l] > H[maxIndex])
+    {
         maxIndex = l;
     }
     int r = rightChild(i);
 
-    if (r <= s && H[r] > H[maxIndex]) {
+    if (r <= s && H[r] > H[maxIndex])
+    {
         maxIndex = r;
     }
-    if (i != maxIndex) {
+    if (i != maxIndex)
+    {
         swap(H[i], H[maxIndex]);
         shiftDown(maxIndex);
     }
 }
-void insert(int p) {
+void insert(int p)
+{
     s = s + 1;
     H[s] = p;
     shiftUp(s);
@@ -52,28 +62,32 @@ void insert(int p) {
 // heap property.
 // int s=-1, current index value of the array H[].
 
-class Solution {
-  public:
-    int extractMax() {
+class Solution
+{
+public:
+    int extractMax()
+    {
         // your code here
-        int ans=H[0];
-        int last=H[s];
-        H[0]=H[s];
+        int ans = H[0];
+        int last = H[s];
+        H[0] = H[s];
         s--;
         shiftDown(0);
         return ans;
     }
 };
 
-
 //{ Driver Code Starts.
-int main() {
+int main()
+{
     int t;
     cin >> t;
-    while (t--) {
+    while (t--)
+    {
         int n;
         cin >> n;
-        for (int i = 0; i < n; i++) {
+        for (int i = 0; i < n; i++)
+        {
             int k;
             cin >> k;
             insert(k);
@@ -85,7 +99,8 @@ int main() {
         cout << "Priority queue after "
              << "extracting maximum : ";
         int j = 0;
-        while (j <= s) {
+        while (j <= s)
+        {
             cout << H[j] << " ";
             j++;
         }

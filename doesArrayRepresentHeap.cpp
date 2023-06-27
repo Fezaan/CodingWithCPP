@@ -4,34 +4,38 @@ using namespace std;
 
 // } Driver Code Ends
 
-class Solution{
-    public:
+class Solution
+{
+public:
     bool isMaxHeap(int a[], int n)
     {
         // Your code goes here
-        for(int i=0;(2*i+1)<n || (2*i+2)<n;i++){
-            if(a[i]<a[2*i+1] || a[i]<a[2*i+2])  return 0;
+        for (int i = 0; (2 * i + 1) < n || (2 * i + 2) < n; i++)
+        {
+            if (a[i] < a[2 * i + 1] || a[i] < a[2 * i + 2])
+                return 0;
         }
         return 1;
     }
 };
 
 //{ Driver Code Starts.
-int main() {
-    
+int main()
+{
+
     int t;
     cin >> t;
-    while(t--)
+    while (t--)
     {
-       int n;
-       cin >> n;
-       int a[4*n]={0};
-       for(int i =0;i<n;i++){
-           cin >> a[i];
-       }
-       Solution ob;
-       cout<<ob.isMaxHeap(a, n)<<endl;
-        
+        int n;
+        cin >> n;
+        int a[4 * n] = {0};
+        for (int i = 0; i < n; i++)
+        {
+            cin >> a[i];
+        }
+        Solution ob;
+        cout << ob.isMaxHeap(a, n) << endl;
     }
     return 0;
 }
